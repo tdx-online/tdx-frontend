@@ -64,7 +64,7 @@
 
           <div>
             <span class="common-font">数量</span>
-            <el-input-number v-model="count" :max="data.stock" :min="1"></el-input-number>
+            <el-input-number v-model="count" :max="data.stock" :min="1"/>
             <span class="common-font">件&nbsp;库存&nbsp;{{ data.stock }}&nbsp;件</span>
           </div>
 
@@ -162,7 +162,6 @@ export default {
     }
   },
   methods: {
-
     async getDetails(id) {
       pid = id
       await axios.get("/user/getUser").then((data) => {
@@ -185,17 +184,17 @@ export default {
           }
         }).then((data) => {
           console.log(data)
-              if (data.data.flag)//如果查询成功
-              {
-                this.buttonType = data.data.data ? "info" : "danger";//是否在购物车中
-              } else {
-                ElMessage({
-                  message: '查询是否在购物车中失败',
-                  type: 'error',
-                  duration: 2 * 1000
-                });
-              }
-            })
+          if (data.data.flag)//如果查询成功
+          {
+            this.buttonType = data.data.data ? "info" : "danger";//是否在购物车中
+          } else {
+            ElMessage({
+              message: '查询是否在购物车中失败',
+              type: 'error',
+              duration: 2 * 1000
+            });
+          }
+        })
       }
 
       await axios.get('/product/details/' + id)
@@ -203,6 +202,8 @@ export default {
             if (res.status === 200 && res.data.flag) {
               this.data = res.data.data;
 
+              // this.showImages = []
+              // this.detailImages = []
               this.data.images.forEach(item => {
                 if (item.type === "type_single") {
                   this.showImages.push(item);
@@ -286,7 +287,13 @@ export default {
               type: 'success',
               duration: 2 * 1000
             });
-            this.getDetails(this.route.query.id)
+            // this.getDetails(this.route.query.id)
+            axios.get('/product/details/' + this.route.query.id)
+                .then(res => {
+                  if (res.status === 200 && res.data.flag) {
+                    this.data.stock = res.data.data.stock;
+                  }
+                })
           } else {
             ElMessage({
               message: '创建订单失败！',
@@ -344,7 +351,6 @@ export default {
     },
 
   },
-
   async mounted() {
     this.show = false;
     await this.getDetails(this.route.query.id);
@@ -358,8 +364,8 @@ export default {
   }
 };
 
-var uid = -1;
-var pid = -1;
+let uid = -1;
+let pid = -1;
 </script>
 
 <style scoped>
