@@ -33,8 +33,14 @@ export default {
                 });
         },
         logout({commit}) {
-            commit('clearToken');
-            // delete axios.defaults.headers.common['Authorization'];
+            return axios.get("/user/logout")
+                .then(res => {
+                    if (res.data.flag) {
+                        commit('clearToken');
+                        delete axios.defaults.headers.common['Authorization'];
+                    }
+                    return res
+                })
         }
     }
 };
