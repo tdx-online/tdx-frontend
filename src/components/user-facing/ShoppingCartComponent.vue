@@ -127,6 +127,14 @@ export default {
           uid: this.userId,
           orderItems: this.selectedItems
         }
+        if(orderData.orderItems.length === 0){
+          ElMessage({
+            message: '请选择要结算的商品',
+            type: 'warning',
+            duration: 2 * 1000
+          });
+          return;
+        }
         axios.post('/order/createOrder', orderData)
             .then(res => {
               if (res.status === 200 && res.data.flag) {
