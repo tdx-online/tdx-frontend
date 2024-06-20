@@ -22,20 +22,20 @@ function register() {
 }
 
 function logout() {
-  // axios.get("/user/logout")
   store.dispatch("userStore/logout")
       .then((res) => {
         if (res.data.flag) {
+          ElMessage.success("退出成功");
           isLogin.value = false;
           userName.value = "";
           userId.value = "";
           router.push("/");
         } else {
-          alert("退出失败");
+          ElMessage.error("退出失败");
         }
       })
       .catch(() => {
-        alert("退出失败");
+        ElMessage.error("退出失败");
       });
 }
 
