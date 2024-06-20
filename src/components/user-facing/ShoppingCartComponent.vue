@@ -1,7 +1,7 @@
 <script>
 import axios from "axios";
 // import {useRouter} from "vue-router";
-import {ElMessageBox, ElMessage} from "element-plus";
+import {ElMessage, ElMessageBox} from "element-plus";
 import {mapGetters} from "vuex";
 
 export default {
@@ -208,9 +208,9 @@ export default {
       })
     }
   },
-  async mounted() {
+  mounted() {
     this.show = false;
-    await axios.get('/cart/show?id=' + this.userId)
+    axios.get('/cart/show?id=' + this.userId)
         .then(res => {
           if (res.status === 200 && res.data.flag) {
             this.tableData = res.data.data;
