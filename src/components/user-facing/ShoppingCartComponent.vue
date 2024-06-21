@@ -282,7 +282,7 @@ export default {
 
       <el-table-column align="center" fixed="right" label="总价" width="150">
         <template v-slot="scope">
-          <span class="price-show">￥&nbsp;{{ scope.row.product.promotePrice * scope.row.count }}</span>
+          <span class="price-show">￥&nbsp;{{ (scope.row.product.promotePrice * scope.row.count).toFixed(2) }}</span>
         </template>
       </el-table-column>
 
