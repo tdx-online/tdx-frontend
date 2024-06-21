@@ -12,9 +12,9 @@
         </template>
       </el-table-column>
       <el-table-column sortable prop="createDate" label="创建时间" align="center" width="200"></el-table-column>
-      <el-table-column prop="payDate" label="支付时间" align="center" width="200"></el-table-column>
-      <el-table-column prop="deliveryDate" label="发货时间" align="center" width="200"></el-table-column>
-      <el-table-column prop="confirmDate" label="确认时间" align="center" width="200"></el-table-column>
+<!--      <el-table-column prop="payDate" label="支付时间" align="center" width="200"></el-table-column>-->
+<!--      <el-table-column prop="deliveryDate" label="发货时间" align="center" width="200"></el-table-column>-->
+<!--      <el-table-column prop="confirmDate" label="确认时间" align="center" width="200"></el-table-column>-->
       <el-table-column prop="status" label="订单状态" align="center" min-width="100"
       >
         <template v-slot="scope">
