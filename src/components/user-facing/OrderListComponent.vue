@@ -273,6 +273,7 @@ export default {
                 type: 'error'
               });
             });
+        this.fetchOrders()
       }).catch(() => {
         // 用户取消评价
       });

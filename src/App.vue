@@ -7,6 +7,8 @@ import axios from "axios";
 import {ElMessage} from "element-plus";
 //本地部署
 axios.defaults.baseURL = "http://localhost:8780";
+// axios.defaults.baseURL = "http://localhost:8081";
+// axios.defaults.baseURL = "http://localhost:8083/product-service";
 axios.defaults.withCredentials = true;
 if (localStorage.getItem("token") !== null) {
   axios.defaults.headers.common["Authorization"] = "Bearer " + localStorage.getItem("token");

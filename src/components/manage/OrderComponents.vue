@@ -8,7 +8,7 @@
       <el-table-column sortable prop="productCount" label="商品总数" align="center" width="120"></el-table-column>
       <el-table-column sortable prop="totalPrice" label="总金额" align="center" width="150">
         <template v-slot="scope">
-          {{ scope.row.totalPrice.toFixed(2) }}
+          {{ scope.row.totalPrice !== null ? scope.row.totalPrice.toFixed(2) : "0.00" }}
         </template>
       </el-table-column>
       <el-table-column sortable prop="createDate" label="创建时间" align="center" width="200"></el-table-column>
@@ -49,7 +49,6 @@
 
 <script>
 import axios from 'axios';
-import qs from "qs";
 import {ElMessage, ElMessageBox} from "element-plus";
 
 export default {
@@ -108,10 +107,10 @@ export default {
       });
     },
     deliveryOrder(orderId, status) {
-      axios.post('/order/updateStatus', qs.stringify({
+      axios.post('/order/updateStatus', {
         "id": orderId,
         "status": status,
-      }))
+      })
           .then(res => {
             if (res.data.flag) {
               this.$message({

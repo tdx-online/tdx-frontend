@@ -151,6 +151,10 @@ export default {
       }
     },
     upload() {
+      if (this.selectedFile === null) {
+        ElMessage.error("请选择图片");
+        return;
+      }
       let formData = new FormData();
       formData.append("file", this.selectedFile);
       formData.append("filename", this.selectedFile.name);

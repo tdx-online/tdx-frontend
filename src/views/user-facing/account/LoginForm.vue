@@ -49,11 +49,6 @@ const password = ref("");
 
 function submitForm() {
 
-  if (username.value === "admin" && password.value === "admin") {
-    router.push('/manage')
-    return false;
-  }
-
   if (username.value === "" || password.value === "") {
     ElMessage({
       message: '用户名或密码不能为空!',
@@ -75,7 +70,11 @@ function submitForm() {
         duration: 2 * 1000
       });
       axios.defaults.headers.common["Authorization"] = "Bearer " + localStorage.getItem("token");
-      router.push('/');
+      if (username.value === "admin") {
+        router.push("/manage");
+      } else {
+        router.push('/');
+      }
     } else {
       ElMessage({
         message: '登录失败，请重试!',

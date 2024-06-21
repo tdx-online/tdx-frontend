@@ -6,15 +6,15 @@
       <el-table-column align="center" label="用户名称" prop="username" width="450"></el-table-column>
       <el-table-column align="center" label="用户邮箱" prop="email" width="450"></el-table-column>
       <el-table-column align="center" label="用户地址" prop="address" width="450"></el-table-column>
-      <el-table-column
-          fixed="right"
-          label="操作"
-          width="170"
-      >
-        <template v-slot="scope">
-          <el-button size="small" type="danger" @click="confirmDelete(scope.row.id)">删除</el-button>
-        </template>
-      </el-table-column>
+<!--      <el-table-column-->
+<!--          fixed="right"-->
+<!--          label="操作"-->
+<!--          width="170"-->
+<!--      >-->
+<!--        <template v-slot="scope">-->
+<!--          <el-button size="small" type="danger" @click="confirmDelete(scope.row.id)">删除</el-button>-->
+<!--        </template>-->
+<!--      </el-table-column>-->
     </el-table>
     <div class="pagination-container">
       <el-pagination
